@@ -38,13 +38,13 @@ let ensembleEleves = [
   new Eleves("Abdoul Wakhab", 20),
   new Eleves("Baba", 20),
 ];
-console.table(ensembleEleves);
+// console.table(ensembleEleves);
 
 // ---------------------
 
 class Voiture {
   constructor(marque, modele) {
-    console.log("je suis le constructeur de: ", marque, modele);
+    // console.log("je suis le constructeur de: ", marque, modele);
 
     this.marque = marque;
     this.modele = modele;
@@ -55,4 +55,63 @@ class Voiture {
 }
 
 const voiture1 = new Voiture("Mercedes", "Benz");
-const voiture2 = new Voiture("BMW", "X6").demarer();
+// const voiture2 = new Voiture("BMW", "X6").demarer();
+
+// --------------------------------
+class Comptebanquaire {
+  #Solde = 0; //Propriété privée
+  deposer(montant) {
+    this.#Solde += montant;
+  }
+  afficherSolde() {
+    console.log(`solde : ${this.#Solde} FCFA`);
+  }
+}
+const compte = new Comptebanquaire();
+compte.deposer(3000);
+// compte.afficherSolde();
+
+// --------------------------------
+
+class Personnage {
+  constructor(nom, rôle, hp, attk) {
+    this.nom = nom;
+    this.rôle = rôle;
+    this.hp = hp;
+    this.attk = attk;
+  }
+  // --------------------------------
+  attaquer(personnage) {
+    console.log(
+      `${this.nom} attaque ${personnage} avec une puissance de ${this.attk}`
+    );
+  }
+  subirAttaque(attk) {
+    this.hp -= attk;
+    console.log(`${this.nom} subit une attaque avec une puissance de ${attk}`);
+    console.log(`Il reste à ${this.nom} ${this.hp} d'hp.`);
+  }
+}
+const personnage1 = new Personnage("livai", "combattant", 1400, 500);
+const personnage2 = new Personnage("ErenTitan", "combattant", 5400, 1000);
+personnage1.attaquer("ErenTitan");
+personnage2.subirAttaque(500);
+// --------------------------------
+class PersonneGetters {
+  #nom;
+  constructor(nom) {
+    this.#nom = nom;
+  }
+  get nom() {
+    return this.#nom;
+  }
+  set nom(valeur) {
+    if (valeur) {
+      this.#nom = valeur;
+    }
+  }
+}
+const Alice = new PersonneGetters("Alice");
+// console.log(Alice.nom);
+Alice.nom = "Bob";
+// console.log(Alice.nom);
